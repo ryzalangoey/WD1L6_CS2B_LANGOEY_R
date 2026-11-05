@@ -1,0 +1,182 @@
+/* ---------- Design tokens (colours and fonts in one place) ---------- */
+:root {
+  --plum: #6e3f51;          /* main dark colour, headings and buttons */
+  --plum-dark: #55303f;     /* hover state */
+  --rose: #c47a92;          /* accent for small highlights */
+  --blush: #f9d9e1;         /* soft page tint */
+  --cream: #fff8f4;         /* card and section background */
+  --ink: #3b2a31;           /* body text */
+  --leaf: #2e7d32;          /* GroceryKo green, used in the palette */
+
+  --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--cream);
+  line-height: 1.7;
+}
+
+/* Respect people who turn off animations in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+h1, h2, h3, .brand-name { font-family: var(--font-head); color: var(--plum); }
+
+/* Clear keyboard focus so the page is usable without a mouse */
+a:focus-visible, button:focus-visible, .form-control:focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 2px;
+}
+
+/* ---------- Navbar ---------- */
+.site-nav {
+  background-color: rgba(255, 248, 244, 0.96);
+  border-bottom: 1px solid var(--blush);
+}
+.brand-name { font-weight: 700; font-size: 1.35rem; }
+.site-nav .nav-link { color: var(--ink); font-weight: 600; }
+.site-nav .nav-link:hover { color: var(--rose); }
+/* .active is added automatically by Bootstrap scrollspy */
+.site-nav .nav-link.active { color: var(--plum); border-bottom: 2px solid var(--rose); }
+
+/* ---------- Custom Bootstrap-style buttons ---------- */
+.btn-plum {
+  background-color: var(--plum);
+  border-color: var(--plum);
+  color: #fff;
+}
+.btn-plum:hover { background-color: var(--plum-dark); border-color: var(--plum-dark); color: #fff; }
+
+.btn-outline-plum { border: 2px solid var(--plum); color: var(--plum); }
+.btn-outline-plum:hover { background-color: var(--plum); color: #fff; }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  padding-top: 5.5rem;            /* space for the fixed navbar */
+  background: linear-gradient(160deg, var(--blush) 0%, var(--cream) 70%);
+}
+.hero-hello { font-size: 1.25rem; color: var(--rose); font-weight: 700; margin-bottom: 0; }
+.hero-name { font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: 1.05; margin-bottom: 0.5rem; }
+.hero-role { font-size: 1.35rem; font-weight: 600; }
+.hero-tagline { max-width: 34rem; font-size: 1.1rem; }
+
+/* The photo sits in an arch: rounded top, flat bottom */
+.photo-arch {
+  width: min(100%, 340px);
+  aspect-ratio: 3 / 4;
+  border-radius: 999px 999px 24px 24px;
+  overflow: hidden;
+  border: 8px solid var(--cream);
+  box-shadow: 14px 14px 0 var(--rose);
+}
+.photo-arch img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Sections ---------- */
+.section { padding: 6rem 0; }
+.section-soft { background-color: var(--blush); }
+.section-title { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+.lead-text { font-size: 1.1rem; max-width: 40rem; margin-left: auto; margin-right: auto; }
+.section .row .col-md-7 .lead-text { margin-left: 0; }  /* left-align inside the developer section */
+
+/* ---------- Developer section ---------- */
+.dev-photo { border-radius: 24px; box-shadow: 0 10px 30px rgba(110, 63, 81, 0.2); }
+
+.motto {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  color: var(--plum);
+  border-left: 5px solid var(--rose);
+  padding-left: 1rem;
+  margin: 1.25rem 0;
+}
+
+.fact-list li { padding: 0.35rem 0; border-bottom: 1px solid rgba(110, 63, 81, 0.15); }
+.fact-list strong { color: var(--plum); display: inline-block; min-width: 7rem; }
+
+/* ---------- Design philosophy ---------- */
+.pillar {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 1.75rem;
+  height: 100%;
+  border-top: 6px solid var(--rose);
+}
+.pillar h3 { font-size: 1.3rem; }
+.pillar p { margin-bottom: 0; }
+
+.palette-title { font-family: var(--font-head); color: var(--plum); }
+
+.swatch { width: 5.5rem; text-align: center; font-size: 0.85rem; }
+.swatch-dot {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin: 0 auto 0.4rem;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Projects ---------- */
+.project-card {
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--cream);
+  box-shadow: 0 6px 20px rgba(110, 63, 81, 0.12);
+}
+.project-card .carousel-item img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+.project-card .card-title { font-family: var(--font-head); color: var(--plum); }
+.project-badge { background-color: var(--plum); color: #fff; font-weight: 600; }
+.tech-tag { background-color: var(--blush); color: var(--plum); font-weight: 600; }
+
+/* Carousel arrows get a dark circle so they stay visible on any screenshot */
+.project-card .carousel-control-prev-icon,
+.project-card .carousel-control-next-icon {
+  background-color: rgba(59, 42, 49, 0.6);
+  border-radius: 50%;
+  background-size: 55%;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-list li { padding: 0.5rem 0; }
+.contact-list a { color: var(--plum); font-weight: 600; text-decoration: none; }
+.contact-list a:hover { color: var(--rose); text-decoration: underline; }
+.contact-list .label { display: block; font-size: 0.85rem; color: var(--ink); opacity: 0.7; }
+
+.form-control:focus { border-color: var(--rose); box-shadow: 0 0 0 0.2rem rgba(196, 122, 146, 0.25); }
+
+/* ---------- Footer + back-to-top ---------- */
+.site-footer { background-color: var(--plum); color: var(--blush); padding: 1.75rem 0; }
+
+.to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--plum);
+  color: #fff;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+.to-top:hover { background-color: var(--rose); }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 575.98px) {
+  .section { padding: 4rem 0; }
+  .photo-arch { box-shadow: 8px 8px 0 var(--rose); }
+}
